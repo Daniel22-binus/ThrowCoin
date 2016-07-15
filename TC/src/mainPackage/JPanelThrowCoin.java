@@ -11,8 +11,8 @@ public class JPanelThrowCoin extends JPanel{
 	public JPanelThrowCoin() {
 	}
 	private static final long serialVersionUID = 1L;
-	private static final String headImglocalization = "C:\\Users\\Rif\\workspace\\TC\\bin\\head.jpg";
-	private static final String tailImglocalization = "C:\\Users\\Rif\\workspace\\TC\\bin\\tail.jpg";
+	private static final String headImglocalization = "D:\\Repo\\TC\\TC\\img\\head.jpg";
+	private static final String tailImglocalization = "D:\\Repo\\TC\\TC\\img\\tail.jpg";
 	private boolean isHead;
 	private boolean isReseted;
 	
