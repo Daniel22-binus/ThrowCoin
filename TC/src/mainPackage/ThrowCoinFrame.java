@@ -95,6 +95,14 @@ public class ThrowCoinFrame {
 		frame.getContentPane().add(panelThrowCoin);
 		frame.getContentPane().add(btnThrow);
 		frame.getContentPane().add(btnReset);
+		
+		JButton btnSave = new JButton("SAVE");
+		btnSave.setBounds(10, 165, 99, 37);
+		frame.getContentPane().add(btnSave);
+		
+		JButton btnLoad = new JButton("LOAD");
+		btnLoad.setBounds(10, 213, 98, 37);
+		frame.getContentPane().add(btnLoad);
 	}
 	
 	// Result after pressed btnThrow
