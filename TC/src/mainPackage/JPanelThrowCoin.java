@@ -8,13 +8,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class JPanelThrowCoin extends JPanel{
-	public JPanelThrowCoin() {
-	}
 	private static final long serialVersionUID = 1L;
-	private static final String headImglocalization = "D:\\Repo\\TC\\TC\\img\\head.jpg";
-	private static final String tailImglocalization = "D:\\Repo\\TC\\TC\\img\\tail.jpg";
+	private static final String headImglocalization = "img\\head.jpg";
+	private static final String tailImglocalization = "img\\tail.jpg";
 	private boolean isHead;
 	private boolean isReseted;
+	
+	public JPanelThrowCoin() {
+	}
 	
 	public void setResult(boolean result) {
 		isHead = result;

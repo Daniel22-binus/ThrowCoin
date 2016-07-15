@@ -5,6 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -77,12 +81,6 @@ public class ThrowCoinFrame {
 		
 		panelThrowCoin = new JPanelThrowCoin();
 		panelThrowCoin.setBounds(118, 11, 300, 300);
-		//head = new ImageIcon(this.getClass().getResource("head.jpg")).getImage();
-		//tail = new ImageIcon(this.getClass().getResource("tail.jpg")).getImage();
-		//labelCoin.setIcon(new ImageIcon(head));
-		//labelCoin.setIcon(new ImageIcon(tail));
-		
-		
 		
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(lblOverall);
@@ -97,10 +95,12 @@ public class ThrowCoinFrame {
 		frame.getContentPane().add(btnReset);
 		
 		JButton btnSave = new JButton("SAVE");
+		btnSave.addActionListener(new BtnSaveListener());
 		btnSave.setBounds(10, 165, 99, 37);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnLoad = new JButton("LOAD");
+		btnLoad.addActionListener(new BtnLoadListener());
 		btnLoad.setBounds(10, 213, 98, 37);
 		frame.getContentPane().add(btnLoad);
 	}
@@ -134,6 +134,38 @@ public class ThrowCoinFrame {
 			lblNewLabel.setText("RESETED STATS");
 			panelThrowCoin.resetImg();
 			frame.repaint();
+		}
+	}
+	// Saving and loading
+	class BtnSaveListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				FileOutputStream fs = new FileOutputStream("data\\throwsStat.ser");
+				ObjectOutputStream os = new ObjectOutputStream(fs);
+				os.writeObject(c);
+				os.close();
+				lblNewLabel.setText("SAVED STATS");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	class BtnLoadListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				FileInputStream fs = new FileInputStream("data\\throwsStat.ser");
+				ObjectInputStream os = new ObjectInputStream(fs);
+				c = (Coin) os.readObject();
+				os.close();
+				lblHeadsnr.setText(String.valueOf(c.getHeads()));
+				lblTailsnr.setText(String.valueOf(c.getTails()));
+				lblOverallnr.setText(String.valueOf(c.getOverall()));
+				frame.repaint();
+				lblNewLabel.setText("LOADED STATS");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 }

@@ -1,8 +1,10 @@
 package mainPackage;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Coin {
+public class Coin implements Serializable{
+	private static final long serialVersionUID = -8362331580089960563L;
 	private boolean obverse;
 	private int heads;
 	private int overall;
