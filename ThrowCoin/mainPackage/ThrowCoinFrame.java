@@ -8,12 +8,10 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ThrowCoinFrame {
+public class ThrowCoinFrame extends JFrame{
 
-	private JFrame frame;
-	JLabel lblNewLabel;
 	private Coin c;
-
+	private JLabel lblNewLabel;
 	/**
 	 * Launch the application.
 	 */
@@ -24,6 +22,7 @@ public class ThrowCoinFrame {
 	 */
 	public ThrowCoinFrame() {
 		initialize();
+		this.setVisible(true);
 	}
 
 	/**
@@ -31,23 +30,24 @@ public class ThrowCoinFrame {
 	 */
 	private void initialize() {
 		c = new Coin();
-		frame = new JFrame();
-		frame.setBounds(100, 100, 397, 269);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+
+		this.setBounds(100, 100, 397, 269);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(null);
 		
 		JButton btnThrow = new JButton("Throw");
-		btnThrow.addActionListener(new BtnThrowListener());
+		btnThrow.addActionListener(TossCoin);
 		btnThrow.setBounds(267, 45, 104, 113);
-		frame.getContentPane().add(btnThrow);
+		this.getContentPane().add(btnThrow);
 		
 		lblNewLabel = new JLabel("Result");
 		lblNewLabel.setBounds(10, 190, 361, 40);
-		frame.getContentPane().add(lblNewLabel);
+		this.getContentPane().add(lblNewLabel);
 	}
 	
 	// Result after pressed btnThrow
-	class BtnThrowListener implements ActionListener {
+	ActionListener TossCoin = new ActionListener() {
+		
 		public void actionPerformed(ActionEvent e){
 			setResult(c.doThrow());
 		}
@@ -59,7 +59,11 @@ public class ThrowCoinFrame {
 				lblNewLabel.setText("TAIL !");
 			}
 		}
+	};
+
+	public static void main (String [] args)
+	{
+		new ThrowCoinFrame();
 	}
-	
 	
 }

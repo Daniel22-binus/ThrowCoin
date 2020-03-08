@@ -16,7 +16,4 @@ public class Coin {
 		return obverse;
 	}
 	
-	public boolean getResult() {
-		return obverse;
-	}
 }
